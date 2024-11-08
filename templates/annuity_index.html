@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Annuity Estimate</title>
+</head>
+<body>
+    <h1>Annuity Estimate</h1>
+    <form method="POST" action="/annuity_estimate">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="sex">Sex:</label>
+        <select id="sex" name="sex">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br><br>
+
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required><br><br>
+
+        <label for="annuity_amount">Yearly Annuity Amount ($):</label>
+        <input type="number" id="annuity_amount" name="annuity_amount" required><br><br>
+
+        <label for="life_type">Annuity Type:</label>
+        <select id="life_type" name="life_type">
+            <option value="whole">Whole Life</option>
+            <option value="term">Term Life</option>
+        </select><br><br>
+
+        <div id="term_length_div" style="display: none;">
+            <label for="term_length">Term Length (Years):</label>
+            <input type="number" id = "term_length" name = "term_length"><br><br>
+        </div>
+
+        <label for="payment_frequency">Payment Frequency:</label>
+        <select id="payment_frequency" name="payment_frequency">
+            <option value="Yearly">Yearly (1 payment/year)</option>
+            <option value="Quarterly">Quarterly (4 payments/year)</option>
+            <option value="Monthly">Monthly (12 payments/year)</option>
+            <option value="Bi-weekly">Bi-weekly (26 payments/year)</option>
+        </select><br><br>
+
+        <input type="submit" value="Calculate Estimate">
+    </form>
+
+    <script>
+        // JavaScript to show/hide term length based on life type selection
+        document.getElementById("life_type").addEventListener("change", function() {
+            var termLengthDiv = document.getElementById("term_length_div");
+            if (this.value === "term") {
+                termLengthDiv.style.display = "block";
+            } else {
+                termLengthDiv.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
